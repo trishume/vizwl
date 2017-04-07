@@ -9,12 +9,11 @@ class SceneOutput : public Output
 {
 public:
   explicit SceneOutput(QObject *parent = 0);
-  void setScene(QGraphicsScene *scene);
+  QGraphicsScene *scene;
 
   virtual void runCommand(Command command, QVector<float> &args);
 
 private:
-  QGraphicsScene *scene;
 };
 
 #endif // SCENEOUTPUT_H

@@ -3,13 +3,10 @@
 #include <QGraphicsScene>
 #include <QGraphicsLineItem>
 
-SceneOutput::SceneOutput(QObject *parent): Output(parent), scene(scene)
+SceneOutput::SceneOutput(QObject *parent): Output(parent)
 {
-
-}
-
-void SceneOutput::setScene(QGraphicsScene *scene) {
-  this->scene = scene;
+  scene = new QGraphicsScene();
+  scene->setBackgroundBrush(QBrush(QColor(255,0,0)));
 }
 
 void SceneOutput::runCommand(Output::Command command, QVector<float> &args) {
@@ -19,7 +16,7 @@ void SceneOutput::runCommand(Output::Command command, QVector<float> &args) {
       if(args.length() < 4) break;
       qDebug() << "line";
       QGraphicsLineItem *item = new QGraphicsLineItem(args[0],args[1],args[2],args[3]);
-      scene->addItem(item); // TODO leak
+      scene->addItem(item); // TODO leak?
   }
       break;
     case Command::rectangle:

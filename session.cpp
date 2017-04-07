@@ -53,10 +53,10 @@ void Session::doFrame() {
   interp.replaceFrame(curFrame);
 
 //  window->scene->clear();
-  SceneOutput output(window->scene);
-  interp.drawFrame(&output);
+  SceneOutput output(this);
+  interp.drawFrame(dynamic_cast<Output*>(&output));
   delete curFrame;
-  window->scene->update(window->scene->sceneRect());
+  window->setNewScene(output.scene);
 
   curFrame = new QByteArray();
 }

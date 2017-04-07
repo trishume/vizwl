@@ -4,13 +4,17 @@
 
 
 MainWindow::MainWindow(QWidget *parent)
-  : QMainWindow(parent)
+  : QMainWindow(parent), scene(NULL)
 {
-  scene = new QGraphicsScene(this);
-  scene->setBackgroundBrush(QBrush(QColor(255,0,0)));
-
   graphicsView = new QGraphicsView(this);
-  graphicsView->setScene(scene);
+  graphicsView->setResizeAnchor(QGraphicsView::NoAnchor);
+  graphicsView->setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
+  graphicsView->setDragMode(QGraphicsView::RubberBandDrag);
+  graphicsView->setOptimizationFlags(QGraphicsView::DontSavePainterState);
+  graphicsView->setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
+  graphicsView->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+//  graphicsView->setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
+
 
   this->setCentralWidget(graphicsView);
 }
@@ -18,4 +22,15 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
 
+}
+
+void MainWindow::setNewScene(QGraphicsScene *scene) {
+  if(this->scene) delete this->scene;
+  this->scene = scene;
+
+  // we want our scene to include 0,0
+  QRectF sceneRect = scene->sceneRect();
+  graphicsView->setSceneRect(sceneRect.united(QRectF(0,0,1,1))); // TODO window bounds
+
+  graphicsView->setScene(scene);
 }

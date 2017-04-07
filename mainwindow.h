@@ -13,10 +13,11 @@ class MainWindow : public QMainWindow
 public:
   MainWindow(QWidget *parent = 0);
   ~MainWindow();
-  QGraphicsScene *scene;
 
+  void setNewScene(QGraphicsScene *scene);
 private:
   QGraphicsView *graphicsView;
+  QGraphicsScene *scene;
 };
 
 #endif // MAINWINDOW_H
