@@ -1,0 +1,5 @@
+---
+- name: ':line'
+  args: [[x1, float],[y1, float],[x2, float],[y2, float],[pen, id_pen]]
+- name: ':fillRect'
+  args: [[x1, float],[y1, float],[x2, float],[y2, float],[brush, id_brush]]

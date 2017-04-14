@@ -1,0 +1,17 @@
+enum Command {
+  <% commands.each do |c| %><%= c[:cmdname] %>,
+  <% end %>
+}
+
+class Message {
+public:
+  Command cmd;
+}
+
+<% commands.each do |c| %>
+class <%= c[:klass] %> : Message {
+public:
+  <% c['args'].each do |name,typ| %><%= TYPE_MAP[typ] %><%= name %>;
+  <% end %>
+}
+<% end %>
