@@ -23,17 +23,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    listener.cpp \
-    session.cpp \
-    textinterpreter.cpp \
-    output.cpp \
-    sceneoutput.cpp
+SOURCES += src/main.cpp\
+        src/mainwindow.cpp \
+    src/listener.cpp \
+    src/session.cpp \
+    src/textinterpreter.cpp \
+    src/output.cpp \
+    src/sceneoutput.cpp
 
-HEADERS  += mainwindow.h \
-    listener.h \
-    session.h \
-    textinterpreter.h \
-    output.h \
-    sceneoutput.h
+HEADERS  += src/mainwindow.h \
+    src/listener.h \
+    src/session.h \
+    src/textinterpreter.h \
+    src/output.h \
+    src/sceneoutput.h
